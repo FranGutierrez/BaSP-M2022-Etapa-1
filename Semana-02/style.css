@@ -1,0 +1,110 @@
+.sidebar{
+    float: left;
+    width: 20%;
+    text-align: left;
+    background-color: #EDEDED;
+}
+.sidebar a{
+    padding: 10px;
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+}
+.main{
+    float: right;
+    width: 80%;
+    padding-top: 10px;
+}
+.info{
+    width: 80%;
+    text-align: left;
+    padding-left: 100px;
+}
+.footer{
+    background-color: #AACE9B;
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    color: white;
+}
+h1{
+    text-align: center;
+}
+nav{
+    text-align: right;
+}
+.img-home{
+    float: right;
+    width: 70%;
+}
+.functions{
+    float: left;
+    width: 30%;
+    text-align: center;
+    margin: 50px 100px;
+}
+.functions-text{
+    float: left;
+    text-align: left;
+}
+.functions-img{
+    float: left;
+    width: 84px;
+    height: 84px;
+}
+.assets{
+    float: left;
+    width: 30%;
+    text-align: left;
+    margin: 25px 100px;
+}
+.assets-img{
+    width: 100%;
+    height: 240px;
+}
+.assets-text{
+    float: left;
+    width: 90%;
+    text-align: left;
+}
+form{
+    text-align: center;
+    padding: 0 100px;
+}
+#short-textbox{
+    width: 40%;
+    margin: 10px 5px;
+}
+#cat{
+    width: 90%;
+    margin: 10px 5px;
+}
+#long-textbox{
+    width: 90%;
+    height: 100px;
+    margin: 10px 5px;
+}
+p.about-us{
+    float: left;
+    width: 80%;
+    text-align: left;
+    padding-left: 100px;
+}
+img.about-us{
+    float: right;
+    width: 586px;
+    height: 402px;
+}
+.lists{
+    float: left;
+    width: 20%;
+    text-align: center;
+    padding-left: 100px;
+}
+ol{
+    text-align: left;
+}
+img.logo{
+    width: 40px;
+    height: 40px;
+}
