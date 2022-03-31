@@ -20,11 +20,11 @@ ul{
     overflow: hidden;
     text-align: right;
 }
-li{
+header li{
     display: inline;
     float: right;
 }
-li a{
+header li a{
     display: block;
     padding: 10px 50px;
     color: black;
