@@ -1,27 +1,5 @@
-h1{
-    text-align: center;
-}
-nav{
-    text-align: right;
-}
-form{
-    padding: 0 100px;
-    text-align: center;
-}
 ol{
     text-align: left;
-}
-.sidebar{
-    float: left;
-    width: 20%;
-    background-color: #EDEDED;
-    text-align: left;
-}
-.sidebar a{
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
 }
 .main{
     float: right;
@@ -32,13 +10,6 @@ ol{
     width: 80%;
     padding-left: 100px;
     text-align: left;
-}
-.footer{
-    width: 100%;
-    height: fit-content;
-    background-color: #AACE9B;
-    color: white;
-    text-align: center;
 }
 .img-home{
     float: right;
@@ -74,19 +45,6 @@ ol{
     width: 90%;
     text-align: left;
 }
-#short-textbox{
-    width: 40%;
-    margin: 10px 5px;
-}
-#cat{
-    width: 90%;
-    margin: 10px 5px;
-}
-#long-textbox{
-    width: 90%;
-    height: 100px;
-    margin: 10px 5px;
-}
 p.about-us{
     float: left;
     width: 80%;
@@ -103,8 +61,4 @@ img.about-us{
     width: 20%;
     padding-left: 100px;
     text-align: center;
-}
-img.logo{
-    width: 40px;
-    height: 40px;
 }

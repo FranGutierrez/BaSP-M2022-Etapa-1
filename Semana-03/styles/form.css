@@ -1,0 +1,17 @@
+form{
+    padding: 0 100px;
+    text-align: center;
+}
+#short-textbox{
+    width: 40%;
+    margin: 10px 5px;
+}
+#cat{
+    width: 90%;
+    margin: 10px 5px;
+}
+#long-textbox{
+    width: 90%;
+    height: 100px;
+    margin: 10px 5px;
+}

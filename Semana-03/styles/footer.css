@@ -1,0 +1,11 @@
+.footer{
+    width: 100%;
+    height: fit-content;
+    background-color: #AACE9B;
+    color: white;
+    text-align: center;
+}
+img.logo{
+    width: 40px;
+    height: 40px;
+}
