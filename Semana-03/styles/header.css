@@ -1,7 +1,36 @@
-h1{
-    text-align: center;
-    font-family: 'Righteous', cursive;
+header{
+    margin: 0;
+    padding: 5px;
+    background-color: #AACE9B;
 }
-nav{
+h1{
+    position: relative;
+    margin: 0;
+    text-align: left;
+    font-family: 'Righteous', cursive;
+    font-size: 50px;
+}
+ul{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     text-align: right;
+}
+li{
+    display: inline;
+    float: right;
+}
+li a{
+    display: block;
+    padding: 10px 50px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+}
+li a:hover{
+    background-color: #98b98a;
 }
