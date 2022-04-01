@@ -1,12 +1,39 @@
 .sidebar{
     float: left;
+    position: fixed;
+    overflow: auto;
     width: 20%;
+    height: 100%;
     background-color: #EDEDED;
     text-align: left;
 }
 .sidebar a{
     display: block;
-    width: 100%;
+    width: 75%;
     padding: 10px;
     margin-top: 5px;
+    margin-left: 10px;
+    border-bottom: 1px solid #c4c4c4;
+    color: black;
+    font-size: 15px;
+    text-decoration: none;
+}
+.sidebar p.title{
+    margin-left: 5px;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color:  #AACE9B;
+}
+.sidebar p{
+    margin-left: 10px;
+    width: 75%;
+    font-size: 15px;
+    font-weight: lighter;
+}
+.sidebar img{
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
 }
