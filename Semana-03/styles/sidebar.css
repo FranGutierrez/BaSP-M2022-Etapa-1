@@ -24,6 +24,7 @@
     font-weight: bold;
     text-decoration: underline;
     text-decoration-color:  #AACE9B;
+    text-decoration-thickness: 4px;
 }
 .sidebar p{
     margin-left: 10px;

@@ -14,9 +14,16 @@ h3{
     font-size: 40px;
     text-decoration: underline;
     text-decoration-color:  #AACE9B;
+    text-decoration-thickness: 4px;
 }
 h4{
     font-size: 30px;
+}
+h5{
+    font-size: 30px;
+    text-decoration: underline;
+    text-decoration-color:  #AACE9B;
+    text-decoration-thickness: 4px;
 }
 .main{
     float: right;
@@ -75,18 +82,27 @@ h4{
 }
 p.about-us{
     float: left;
-    width: 80%;
+    width: 90%;
     padding-left: 100px;
     text-align: left;
+    font-size: 22px;
+    font-weight: bolder;
 }
-img.about-us{
+.about-us img{
     float: right;
     width: 586px;
     height: 402px;
+    border-radius: 23px;
 }
 .lists{
-    float: left;
+    display: inline-block;
     width: 20%;
     padding-left: 100px;
-    text-align: center;
+    text-align: left;
+}
+.lists ol{
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+    font-weight: lighter;
 }
