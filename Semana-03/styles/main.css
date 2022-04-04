@@ -44,6 +44,11 @@ h5{
     float: right;
     width: 70%;
 }
+.learn-more{
+    background-color: white;
+    color: black;
+    border: 2px solid #AACE9B;
+}
 .functions{
     display: inline-block;
     width: 30%;
