@@ -38,3 +38,22 @@
     height: 30px;
     margin-right: 5px;
 }
+div.search{
+    width: 100%;
+    height: 75px;
+    padding: 10px 5px;
+    background-color: #c4c4c4;
+    box-sizing: border-box;
+}
+input[type=search]{
+    padding: 0 10px;
+    border: 0;
+    width: 280px;
+    height: 40px;
+    border-radius: 9px;
+    background-color: white;
+    color: grey;
+    background-image: url("img/search.png");
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+}
