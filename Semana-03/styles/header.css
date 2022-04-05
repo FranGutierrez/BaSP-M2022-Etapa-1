@@ -1,11 +1,13 @@
 header{
+    float: right;
+    width: 80%;
     margin: 0;
     padding: 5px;
     background-color: #AACE9B;
 }
 h1{
     position: relative;
-    margin-left: 310px;
+    margin-left: 20px;
     text-align: left;
     font-family: 'Righteous', cursive;
     font-size: 50px;
