@@ -54,6 +54,6 @@ input[type=search]{
     background-color: white;
     color: grey;
     background-image: url("img/search.png");
-    background-position: 10px 10px;
+    background-position: center;
     background-repeat: no-repeat;
 }
