@@ -1,0 +1,39 @@
+header{
+    float: right;
+    width: 80%;
+    min-height: 100px;
+    margin: 0;
+    padding: 5px;
+    background-color: #AACE9B;
+}
+h1{
+    float: left;
+    position: relative;
+    margin: 15px 20px;
+    text-align: left;
+    font-family: 'Righteous', cursive;
+    font-size: 50px;
+}
+ul{
+    float: right;
+    list-style-type: none;
+    margin-top: 30px;
+    padding: 0;
+    overflow: hidden;
+    text-align: right;
+}
+header li{
+    display: inline;
+    float: right;
+    padding: 0;
+}
+header li a{
+    display: block;
+    padding: 10px 50px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+}
+li a:hover{
+    background-color: #98b98a;
+}

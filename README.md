@@ -6,3 +6,6 @@ Landing page for Trackgenix S.A. Only the HTML document.
 
 ## Week 3
 Stylize the landing page with CSS documents.
+
+## Week 4
+Stylize the landing page with CSS Flexbox properties, to achieve a responsive design following the Mobile First concept.
