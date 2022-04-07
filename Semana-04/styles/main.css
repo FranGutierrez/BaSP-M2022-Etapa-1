@@ -2,8 +2,9 @@ ol{
     text-align: left;
 }
 h2{
-    width: 30%;
-    font-size: 50px;
+    width: 80%;
+    text-align: center;
+    font-size: 3rem;
     text-shadow: 0 4px #ccc;
 }
 h3{
@@ -21,28 +22,38 @@ h5{
     text-decoration-color:  #AACE9B;
     text-decoration-thickness: 4px;
 }
-.main{
-    float: right;
-    width: 75%;
+main{
+    display: flex;
+    flex: 70%;
+    flex-direction: column;
     padding: 10px;
-    margin-right: 25px;
     border-bottom: 3px solid #c4c4c4;
 }
-.info{
-    width: 80%;
-    padding-left: 100px;
-    text-align: left;
+.home{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    min-height: 900px;
+    border-bottom: 3px solid #c4c4c4;
 }
-.info p.home{
+.home p{
+    width: 80%;
+    text-align: center;
     font-size: 24px;
 }
+.info{
+    display: flex;
+    width: 80%;
+    flex-wrap: wrap;
+}
 .img-home{
-    float: right;
-    width: 70%;
+    width: 80%;
 }
 button.learn-more{
     padding: 5px 20px;
-    width: 250px;
+    width: 50%;
     background-color: white;
     color: black;
     border: 4px solid #AACE9B;
