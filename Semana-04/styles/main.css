@@ -170,18 +170,32 @@ button.more:hover{
     min-height: 500px;
     border-bottom: 3px solid #c4c4c4;
 }
-p.about-us{
-    float: left;
-    width: 90%;
-    padding-left: 100px;
-    text-align: left;
-    font-size: 22px;
+.about-us{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    min-height: 800px;
+    border-bottom: 3px solid #c4c4c4;
+}
+.ab-us-text-img{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 80%;
+}
+.ab-us-text-img p{
+    width: 80%;
+    text-align: center;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
-.about-us img{
-    float: right;
-    width: 586px;
-    height: 402px;
+.ab-us-text-img img{
+    width: 80%;
+    height: 50%;
     border-radius: 23px;
 }
 .lists{
