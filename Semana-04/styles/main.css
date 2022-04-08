@@ -160,6 +160,16 @@ button.more{
 button.more:hover{
     background-color: #98b98a;
 }
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: space-around;
+    padding: 10px;
+    width: 100%;
+    min-height: 500px;
+    border-bottom: 3px solid #c4c4c4;
+}
 p.about-us{
     float: left;
     width: 90%;
