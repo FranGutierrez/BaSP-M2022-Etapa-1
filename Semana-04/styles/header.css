@@ -16,7 +16,7 @@ h1{
     font-size: 3rem;
 }
 ul{
-    display: flex;
+    display: none;
     list-style-type: none;
     overflow: hidden;
     justify-content: space-between;
