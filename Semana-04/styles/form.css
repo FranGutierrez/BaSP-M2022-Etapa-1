@@ -14,21 +14,21 @@ form{
     height: 20%;
 }
 #short-textbox{
-    width: 80%;
+    width: 90%;
     margin: 10px 5px;
     padding: 5px 10px;
     box-sizing: border-box;
     color: grey;
 }
 #cat{
-    width: 80%;
+    width: 90%;
     margin: 10px 5px;
     padding: 5px 10px;
     box-sizing: border-box;
     color: grey;
 }
 #long-textbox{
-    width: 80%;
+    width: 90%;
     height: 100px;
     margin: 10px 5px;
     padding: 5px 10px;
@@ -37,7 +37,7 @@ form{
     resize: none;
 }
 input[type=submit]{
-    margin: 0 5px;
+    margin: 5px;
     padding: 5px 10px;
     width: 160px;
     height: 30px;
@@ -53,7 +53,7 @@ input[type=submit]:hover{
     background-color: #98b98a;
 }
 input[type=reset]{
-    margin: 0 5px;
+    margin: 5px;
     padding: 5px 10px;
     width: 100px;
     height: 30px;
@@ -67,4 +67,18 @@ input[type=reset]{
 }
 input[type=reset]:hover{
     background-color: #AACE9B;
+}
+@media(min-width: 768px){
+    .txtshorts{
+        flex-direction: row;
+        justify-content: center;
+    }
+    .buttons{
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-left: 4rem;
+    }
+    #short-textbox{
+        width: 44.5%;
+    }
 }

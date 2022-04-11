@@ -43,7 +43,7 @@ button.learn-more{
 button.learn-more:hover{
     background-color: #AACE9B;
 }
-.functions{
+.functions, .assets, .form{
     padding: 10px;
     width: 100%;
     border-bottom: 3px solid #c4c4c4;
@@ -70,9 +70,6 @@ button.learn-more:hover{
     align-items: center;
     margin-top: 0.5rem;
 }
-.function div h4{
-    margin-bottom: 0.5rem;
-}
 .functions-text{
     width: 50%;
     text-align: center;
@@ -84,55 +81,47 @@ button.learn-more:hover{
     max-width: max-content;
     height: auto;
 }
-.assets{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-content: space-around;
-    padding: 10px;
-    width: 100%;
-    border-bottom: 3px solid #c4c4c4;
-}
 .asset{
+    margin: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 90%;
+}
+.assets-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 .assets-img{
-    width: 100%;
+    margin: 0.5rem;
+    width: 70%;
     max-width: max-content;
     height: auto;
     border-radius: 23px;
 }
 .assets-text{
+    width: 70%;
+    margin: 0.5rem;
     text-align: center;
     font-size: 1rem;
     font-weight: lighter;
 }
 button.more{
+    margin: 0.5rem;
     padding: 5px 10px;
-    width: 90px;
+    width: 20%;
     background-color: #AACE9B;
     color: black;
     border: 0;
     border-radius: 4px;
-    font-size: 15px;
+    font-size: 1rem;
     box-shadow: 0 2px rgba(0, 0, 0, 0.25);
 }
 button.more:hover{
     background-color: #98b98a;
-}
-.form{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-content: space-around;
-    padding: 10px;
-    width: 100%;
-    min-height: 500px;
-    border-bottom: 3px solid #c4c4c4;
 }
 .about-us{
     display: flex;
@@ -211,6 +200,15 @@ button.more:hover{
     .functions-text{
         text-align: left;
     }
+    .assets-container{
+        align-items: flex-start;
+    }
+    .asset{
+        align-items: flex-start;
+    }
+    .assets-text{
+        text-align: left;
+    }
 }
 @media(min-width: 1024px){
     h2{
@@ -227,5 +225,13 @@ button.more:hover{
     .function{
         width: 45%;
         margin-left: 0;
+    }
+    .assets-container{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .asset{
+        width: 45%;
     }
 }

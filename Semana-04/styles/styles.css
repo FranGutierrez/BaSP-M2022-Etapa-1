@@ -23,6 +23,7 @@ h3{
     text-decoration-thickness: 4px;
 }
 h4{
+    margin: 0.5rem;
     flex-shrink: 0;
     font-size: 1.75rem;
 }
