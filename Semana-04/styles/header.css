@@ -36,3 +36,8 @@ header li a{
 li a:hover{
     background-color: #98b98a;
 }
+@media(min-width: 1024px){
+    ul{
+        display: flex;
+    }
+}

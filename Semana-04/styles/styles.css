@@ -1,13 +1,13 @@
 body{
     display: flex;
-    flex-direction: column;
     font-family: 'Roboto', sans-serif;
 }
 ol{
     text-align: left;
 }
 h2{
-    width: 80%;
+    width: 60%;
+    margin: 1rem;
     text-align: center;
     font-size: 3rem;
     font-weight: bold;
