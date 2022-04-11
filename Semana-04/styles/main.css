@@ -1,3 +1,9 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
 main{
     display: flex;
     flex-direction: column;
@@ -172,8 +178,14 @@ button.more:hover{
     margin: 1rem 2rem;
 }
 @media(min-width: 768px){
+    .content{
+        min-width: 80%;
+    }
     .home div{
         flex-direction: row;
+    }
+    .home p{
+        text-align: left;
     }
     h3{
         text-align: left;
@@ -226,7 +238,7 @@ button.more:hover{
         justify-content: space-around;
     }
     .function{
-        width: 45%;
+        width: 44%;
         margin-left: 0;
     }
     .assets-container{
