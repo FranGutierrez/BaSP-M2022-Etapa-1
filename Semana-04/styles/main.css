@@ -43,7 +43,7 @@ button.learn-more{
 button.learn-more:hover{
     background-color: #AACE9B;
 }
-.functions, .assets, .form{
+.functions, .assets, .form, .about-us{
     padding: 10px;
     width: 100%;
     border-bottom: 3px solid #c4c4c4;
@@ -123,42 +123,32 @@ button.more{
 button.more:hover{
     background-color: #98b98a;
 }
-.about-us{
+.about-us div{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    padding: 10px;
-    width: 100%;
-    min-height: 800px;
-    border-bottom: 3px solid #c4c4c4;
 }
-.ab-us-text-img{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    height: 80%;
-}
-.ab-us-text-img p{
+.about-us div p{
     width: 80%;
+    margin: 1rem;
     text-align: center;
     font-size: 1.2rem;
     font-weight: bolder;
 }
-.ab-us-text-img img{
+.about-us div img{
     width: 80%;
-    height: 50%;
+    margin: 1rem;
+    max-width: max-content;
+    height: auto;
     border-radius: 23px;
 }
 .lists-container{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    min-height: 1100px;
-    border-bottom: 3px solid #c4c4c4;
 }
 .lists{
     display: flex;
@@ -166,7 +156,6 @@ button.more:hover{
     justify-content: space-around;
     align-items: center;
     width: 50%;
-    height: 30%;
     padding: 10px;
 }
 .lists ol{
@@ -175,10 +164,12 @@ button.more:hover{
     justify-content: space-around;
     padding: 0;
     margin: 0;
-    width: 60%;
-    height: 80%;
+    width: 70%;
     font-size: 1.2rem;
     font-weight: lighter;
+}
+.lists ol li{
+    margin: 1rem 2rem;
 }
 @media(min-width: 768px){
     .home div{
@@ -209,6 +200,18 @@ button.more:hover{
     .assets-text{
         text-align: left;
     }
+    .about-us div{
+        align-items: flex-start;
+    }
+    .about-us div p{
+        text-align: left;
+    }
+    .lists-container{
+        flex-direction: row;
+    }
+    .lists{
+        width: 30%;
+    }
 }
 @media(min-width: 1024px){
     h2{
@@ -233,5 +236,15 @@ button.more:hover{
     }
     .asset{
         width: 45%;
+    }
+    .about-us div{
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    .about-us div p{
+        width: 40%;
+    }
+    .about-us div img{
+        width: 60%;
     }
 }
