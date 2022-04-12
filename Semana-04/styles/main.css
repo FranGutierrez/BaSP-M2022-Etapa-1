@@ -1,22 +1,19 @@
 .content{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
 }
 main{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 10px;
+    background-color: white;
 }
 .home{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    padding: 10px;
-    width: 100%;
+    padding: 1rem;
     border-bottom: 3px solid #c4c4c4;
 }
 .home div{
@@ -31,7 +28,7 @@ main{
     font-size: 1.5rem;
 }
 .img-home{
-    width: 70%;
+    width: 60%;
     max-width: max-content;
     height: auto;
 }
@@ -50,9 +47,9 @@ button.learn-more:hover{
     background-color: #AACE9B;
 }
 .functions, .assets, .form, .about-us{
-    padding: 10px;
-    width: 100%;
+    padding: 1rem;
     border-bottom: 3px solid #c4c4c4;
+    height: max-content;
 }
 .functions-container{
     display: flex;
@@ -178,13 +175,11 @@ button.more:hover{
     margin: 1rem 2rem;
 }
 @media(min-width: 768px){
-    .content{
-        min-width: 80%;
-    }
     .home div{
         flex-direction: row;
     }
     .home p{
+        width: 40%;
         text-align: left;
     }
     h3{

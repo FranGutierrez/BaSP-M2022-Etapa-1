@@ -1,11 +1,9 @@
 header{
     display: flex;
-    width: 100%;
-    min-height: 10%;
     background-color: #AACE9B;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
-    flex-wrap: nowrap;
+    padding: 0.58rem;
 }
 header img{
     margin: 0 10px;
@@ -37,6 +35,9 @@ li a:hover{
     background-color: #98b98a;
 }
 @media(min-width: 1024px){
+    header{
+        justify-content: space-between;
+    }
     ul{
         display: flex;
     }
