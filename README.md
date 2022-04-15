@@ -12,3 +12,4 @@ Stylize the landing page with CSS Flexbox properties, to achieve a responsive de
 
 ## Week 5
 Excercises of JavaScript.
+https://frangutierrez.github.io/BaSP-M2022-Etapa-1/Semana-05/index.html
