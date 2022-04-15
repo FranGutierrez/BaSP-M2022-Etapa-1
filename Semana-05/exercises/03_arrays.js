@@ -1,4 +1,4 @@
-console.log('EXCERCISE 3: STRINGS');
+console.log('EXCERCISE 3: ARRAYS');
 
 var months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
