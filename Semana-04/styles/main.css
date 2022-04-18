@@ -61,7 +61,6 @@ button.learn-more:hover{
 .function{
     display: flex;
     margin-top: 2rem;
-    width: 100%;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -187,7 +186,7 @@ button.more:hover{
     .function{
         flex-direction: row;
         justify-content: center;
-        margin-left: 10rem;
+        margin-left: 5rem;
     }
     .function div{
         align-items: flex-start;
