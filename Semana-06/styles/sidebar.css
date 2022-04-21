@@ -2,6 +2,7 @@
     display: none;
     flex-direction: column;
     background-color: #EDEDED;
+    width: 30%;
 }
 .a-container{
     display: flex;
