@@ -13,3 +13,6 @@ Stylize the landing page with CSS Flexbox properties, to achieve a responsive de
 ## Week 5
 Excercises of JavaScript.
 https://frangutierrez.github.io/BaSP-M2022-Etapa-1/Semana-05/index.html
+
+## Week 6
+Create a login page and a sign up for employees with the layout of the landing page, using JavaScript to manipulate the DOM. The pages have to be responsives.
