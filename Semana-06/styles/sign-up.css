@@ -47,6 +47,7 @@ main{
 }
 .label-textbox input{
     margin: 0.1rem 0.5rem;
+    padding: 0.25rem;
     width: 78%;
     background-color: #F6F9F4;
     border: #4E5671 1px solid;
@@ -72,4 +73,20 @@ input[type=text].input-error{
 .label-error{
     display: none;
     color: #FF3E1D;
+}
+@media(min-width: 1024px){
+    .signup-form{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .signup-form h3{
+        width: 100%;
+    }
+    .label-textbox{
+        width: 50%;
+    }
+    input[type=button]{
+        width: 51%;
+    }
 }
