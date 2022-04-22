@@ -6,7 +6,7 @@ window.onload = function(){
     emailInput = emailTxtboxDiv.children[1];
     passwordInput = passwordTxtboxDiv.children[1];
     emailInput.addEventListener('focus', hideError(emailTxtboxDiv));
-    passwordInput.addEventListener('focus', hideError(emailTxtboxDiv));
+    passwordInput.addEventListener('focus', hideError(passwordTxtboxDiv));
     logInBtn.addEventListener('click', logInClick);
 }
 
@@ -33,7 +33,6 @@ function logInClick(){
 function validateEmail(email){
     var emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
     if (!emailRegex.test(email)) {
-        showError(emailTxtboxDiv);
         return false;
     } else{
         return true;
@@ -54,7 +53,6 @@ function validatePassword(password){
     if (password.length >= 8 && num >= 1 && char >=1) {
         return true;
     } else{
-        showError(passwordTxtboxDiv);
         return false;
     }
 }
