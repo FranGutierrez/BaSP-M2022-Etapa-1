@@ -60,19 +60,19 @@
             </ul>
         </header>
         <main>
-            <form class="login-form">
+            <form class="login-form" action="process.php" method="POST">
                 <h3>TRACKGENIX</h3>
                 <div class="label-textbox">
                     <p>E-Mail</p>
                     <input type="text" name="email" id="email">
-                    <p class="label-error">Invalid value</p>
+                    <p class="label-error-none">Invalid value</p>
                 </div>
                 <div class="label-textbox">
                     <p>Password</p>
                     <input type="password" name="password" id="password">
-                    <p class="label-error">Invalid value</p>
+                    <p class="label-error-none">Invalid value</p>
                 </div>
-                <input type="button" value="Log In">
+                <input type="button" value="Log In" id="login-btn">
             </form>
         </main>
     </div>
