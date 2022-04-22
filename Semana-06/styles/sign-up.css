@@ -71,8 +71,10 @@ input[type=text].input-error{
     border: #FF3E1D 1px solid;
 }
 .label-error{
-    display: none;
     color: #FF3E1D;
+}
+.label-error-none{
+    display: none;
 }
 @media(min-width: 1024px){
     .signup-form{

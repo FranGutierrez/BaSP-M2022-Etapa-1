@@ -3,6 +3,10 @@ window.onload = function(){
     var textboxes = document.getElementsByClassName('label-textbox');
     emailTxtboxDiv = textboxes[0];
     passwordTxtboxDiv = textboxes[1];
+    emailInput = emailTxtboxDiv.children[1];
+    passwordInput = passwordTxtboxDiv.children[1];
+    emailInput.addEventListener('focus', hideError(emailTxtboxDiv));
+    passwordInput.addEventListener('focus', hideError(emailTxtboxDiv));
     logInBtn.addEventListener('click', logInClick);
 }
 
@@ -11,17 +15,19 @@ function logInClick(){
     password = document.getElementById('password').value;
     if(!validateEmail(email)){
         showError(emailTxtboxDiv);
+        alert('ERROR\nE-mail invalid');
     } else {
         hideError(emailTxtboxDiv);
     }
     if(!validatePassword(password)){
         showError(passwordTxtboxDiv);
+        alert('ERROR\nPassword invalid');
     } else {
         hideError(passwordTxtboxDiv);
     }
     if(validateEmail(email) && validatePassword(password)){
         alert('Log In succesfully!\nE-Mail: ' + email + '\nPassword: ' + password);
-    } 
+    }
 }
 
 function validateEmail(email){

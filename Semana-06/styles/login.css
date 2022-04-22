@@ -70,6 +70,9 @@ input[type=button]:hover{
 input[type=text].input-error{
     border: #FF3E1D 1px solid;
 }
+input[type=password].input-error{
+    border: #FF3E1D 1px solid;
+}
 .label-error{
     color: #FF3E1D;
 }
