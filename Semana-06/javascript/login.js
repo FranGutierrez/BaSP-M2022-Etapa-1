@@ -5,25 +5,17 @@ window.onload = function(){
     passwordTxtboxDiv = textboxes[1];
     emailInput = emailTxtboxDiv.children[1];
     passwordInput = passwordTxtboxDiv.children[1];
-    emailInput.addEventListener('focus', hideError(emailTxtboxDiv));
-    passwordInput.addEventListener('focus', hideError(passwordTxtboxDiv));
     logInBtn.addEventListener('click', logInClick);
 }
 
 function logInClick(){
-    email = document.getElementById('email').value;
-    password = document.getElementById('password').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
     if(!validateEmail(email)){
-        showError(emailTxtboxDiv);
         alert('ERROR\nE-mail invalid');
-    } else {
-        hideError(emailTxtboxDiv);
     }
     if(!validatePassword(password)){
-        showError(passwordTxtboxDiv);
         alert('ERROR\nPassword invalid');
-    } else {
-        hideError(passwordTxtboxDiv);
     }
     if(validateEmail(email) && validatePassword(password)){
         alert('Log In succesfully!\nE-Mail: ' + email + '\nPassword: ' + password);
@@ -33,26 +25,34 @@ function logInClick(){
 function validateEmail(email){
     var emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
     if (!emailRegex.test(email)) {
+        showError(emailTxtboxDiv);
         return false;
     } else{
+        hideError(emailTxtboxDiv);
         return true;
     }
 }
 
 function validatePassword(password){
     var numbers = ['0','1','2','3','4','5','6','7','8','9'];
+    var letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z'];
     var num = 0;
     var char = 0;
+    var special = false;
     for (i = 0; i < password.length; i++) {
         if (numbers.includes(password[i])) {
             num++;
-        } else{
+        } else if(letters.includes(password[i])){
             char++;
+        } else{
+            special = true;
         }
     }
-    if (password.length >= 8 && num >= 1 && char >=1) {
+    if (password.length >= 8 && num >= 1 && char >=1 && !special) {
+        hideError(passwordTxtboxDiv);
         return true;
     } else{
+        showError(passwordTxtboxDiv);
         return false;
     }
 }

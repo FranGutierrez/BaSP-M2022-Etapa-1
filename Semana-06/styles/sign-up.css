@@ -83,7 +83,7 @@ input[type=text].input-error, input[type=password].input-error{
         justify-content: center;
     }
     .signup-form h3{
-        width: 100%;
+        width: 50%;
     }
     .label-textbox{
         width: 50%;
