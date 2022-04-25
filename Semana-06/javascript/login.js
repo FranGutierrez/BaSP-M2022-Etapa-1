@@ -1,20 +1,16 @@
 window.onload = function(){
     var logInBtn = document.getElementById('login-btn');
-    var textboxes = document.getElementsByClassName('label-textbox');
-    emailTxtboxDiv = textboxes[0];
-    passwordTxtboxDiv = textboxes[1];
-    emailInput = emailTxtboxDiv.children[1];
-    passwordInput = passwordTxtboxDiv.children[1];
     logInBtn.addEventListener('click', logInClick);
 }
 
 function logInClick(){
+    var textboxes = document.getElementsByClassName('label-textbox');
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
-    if(!validateEmail(email)){
+    if(!validateEmail(email, textboxes[0])){
         alert('ERROR\nE-mail invalid');
     }
-    if(!validatePassword(password)){
+    if(!validatePassword(password,textboxes[1])){
         alert('ERROR\nPassword invalid');
     }
     if(validateEmail(email) && validatePassword(password)){
@@ -22,18 +18,18 @@ function logInClick(){
     }
 }
 
-function validateEmail(email){
+function validateEmail(email, divTxtbox){
     var emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
     if (!emailRegex.test(email)) {
-        showError(emailTxtboxDiv);
+        showError(divTxtbox);
         return false;
     } else{
-        hideError(emailTxtboxDiv);
+        hideError(divTxtbox);
         return true;
     }
 }
 
-function validatePassword(password){
+function validatePassword(password, divTxtbox){
     var numbers = ['0','1','2','3','4','5','6','7','8','9'];
     var letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z'];
     var num = 0;
@@ -49,10 +45,10 @@ function validatePassword(password){
         }
     }
     if (password.length >= 8 && num >= 1 && char >=1 && !special) {
-        hideError(passwordTxtboxDiv);
+        hideError(divTxtbox);
         return true;
     } else{
-        showError(passwordTxtboxDiv);
+        showError(divTxtbox);
         return false;
     }
 }
