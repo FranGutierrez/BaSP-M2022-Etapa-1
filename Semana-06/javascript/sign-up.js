@@ -1,21 +1,22 @@
 window.onload = function(){
     var signUpBtn = document.getElementById('signup-btn');
-    var textboxes = document.getElementsByClassName('label-textbox');
-    nameTxtboxDiv = textboxes[0];
-    surnameTxtboxDiv = textboxes[1];
-    dniTxtboxDiv = textboxes[2];
-    dateBirthDiv = textboxes[3];
-    phoneTxtboxDiv = textboxes[4];
-    addressTxtboxDiv = textboxes[5];
-    cityTxtboxDiv = textboxes[6];
-    cpTxtboxDiv = textboxes[7];
-    emailTxtboxDiv = textboxes[8];
-    passwordTxtboxDiv = textboxes[9];
-    confPasswordTxtboxDiv = textboxes[10];
     signUpBtn.addEventListener('click', signUpClick);
 }
 
+var nameInput = document.getElementById('name');
+var surnameInput = document.getElementById('surname');
+var dniInput = document.getElementById('dni');
+var birthDateInput = document.getElementById('date-of-birth');
+var phoneNumberInput = document.getElementById('phone-number');
+var addressInput = document.getElementById('address');
+var cityInput = document.getElementById('city');
+var cpInput = document.getElementById('cp');
+var emailInput = document.getElementById('email');
+var passwordInput = document.getElementById('password');
+var confirmPasswordInput = document.getElementById('confirm-password');
+
 function signUpClick(){
+    var textboxes = document.getElementsByClassName('label-textbox');
     var employee = {
         nameValue : document.getElementById('name').value,
         surname : document.getElementById('surname').value,
@@ -30,48 +31,55 @@ function signUpClick(){
         confirmPassword : document.getElementById('confirm-password').value,
     }
     var allIsValid = true;
-    if(!validateNameOrSurname(employee.nameValue, nameTxtboxDiv)){
+    if(!validateNameOrSurname(employee.nameValue, textboxes[0])){
         alert('ERROR\nName invalid');
         allIsValid = false;
     }
-    if(!validateNameOrSurname(employee.surname, surnameTxtboxDiv)){
+    if(!validateNameOrSurname(employee.surname, textboxes[1])){
         alert('ERROR\nSurname invalid');
         allIsValid = false;
     }
-    if(!validateDNI(employee.dni, dniTxtboxDiv)){
+    if(!validateDNI(employee.dni, textboxes[2])){
         alert('ERROR\nDNI invalid');
         allIsValid = false;
     }
-    if(!validateDateOfBirth(employee.birthDate, dateBirthDiv)){
+    /*if(!validateDateOfBirth(employee.birthDate, textboxes[3])){
         alert('ERROR\nDate of birth invalid');
         allIsValid = false;
-    }
-    if (!validatePhoneNumber(employee.phoneNumber, phoneTxtboxDiv)){
+    }*/
+    if (!validatePhoneNumber(employee.phoneNumber, textboxes[4])){
         alert('ERROR\nPhone number invalid');
         allIsValid = false;
     }
-    if(!validateCity(employee.city, cityTxtboxDiv)){
+    if (!validateAddress(employee.address, textboxes[5])) {
+        alert('ERROR\nAddress invalid');
+        allIsValid = false;
+    }
+    if(!validateCity(employee.city, textboxes[6])){
         alert('ERROR\nCity invalid');
         allIsValid = false;
     }
-    if(!validateCP(employee.cp, cpTxtboxDiv)){
+    if(!validateCP(employee.cp, textboxes[7])){
         alert('ERROR\nPostal code invalid');
         allIsValid = false;
     }
-    if(!validateEmail(employee.email, emailTxtboxDiv)){
+    if(!validateEmail(employee.email, textboxes[8])){
         allIsValid = false;
         alert('ERROR\nE-mail invalid');
     }
-    if(!validatePassword(employee.password, passwordTxtboxDiv)){
+    if(!validatePassword(employee.password, textboxes[9])){
         allIsValid = false;
         alert('ERROR\nPassword invalid');
     }
-    if(!validateConfirmPassword(employee.password, employee.confirmPassword, confPasswordTxtboxDiv)){
+    if(!validateConfirmPassword(employee.password, employee.confirmPassword, textboxes[10])){
         allIsValid = false;
         alert('ERROR\nConfirm password invalid');
     }
     if(allIsValid){
-
+        alert('Log In succesfully!\nName: ' + employee.nameValue + '\nSurname: '+ employee.surname +
+        '\nDNI: '+ employee.dni + '\nBirth Date: \nPhone Number: ' + employee.phoneNumber +
+        '\nAddress: \nCity: ' + employee.city + '\nPostal Code: ' + employee.cp + 
+        '\nE-Mail: ' + employee.email + '\nPassword: ' + employee.password);
     }
 
 }
@@ -79,12 +87,13 @@ function signUpClick(){
 function validateNameOrSurname(word, divTxtbox){
     var letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z'];
     var isValid = true;
-    for (i = 0; i < word.length; i++) {
-        if (!letters.includes(word[i])) {
+    var name = word.toLowerCase();
+    for (i = 0; i < name.length; i++) {
+        if (!letters.includes(name[i])) {
             isValid = false;
         }
     }
-    if (word.length >= 3 && isValid){
+    if (name.length >= 3 && isValid){
         hideError(divTxtbox);
         return true;
     } else{
@@ -140,22 +149,53 @@ function validatePhoneNumber(phoneNumber, divTxtbox){
     }
 }
 
+function validateAddress(address,divTxtbox){
+    var numbers = ['0','1','2','3','4','5','6','7','8','9'];
+    var letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z'];
+    var space = ' ';
+    var isValid = true;
+    var char = [];
+    for (i = 0; i < address.length; i++) {
+        if (letters.includes(address[i])) {
+            char.push('l');
+            if (i !== 0 && char[(i-1)] === 'n') {
+                isValid = false;
+            }
+        } else if (space === address[i]) {
+            char.push('s');
+        } else if (numbers.includes(address[i])) {
+            char.push('n');
+            if (i !== 0 && char[(i-1)] === 'l') {
+                isValid = false;
+            }
+        }
+    }
+    if(address.length >= 5 && isValid){
+        hideError(divTxtbox);
+        return true;
+    } else{
+        showError(divTxtbox);
+        return false;
+    }
+}
+
 function validateCity(city, divTxtbox){
     var numbers = ['0','1','2','3','4','5','6','7','8','9'];
     var letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z'];
+    var cityLower = city.toLowerCase();
     var num = 0;
     var char = 0;
     var special = false;
-    for (i = 0; i < city.length; i++) {
+    for (i = 0; i < cityLower.length; i++) {
         if (numbers.includes([i])) {
             num++;
-        } else if(letters.includes(city[i])){
+        } else if(letters.includes(cityLower[i])){
             char++;
         } else{
             special = true;
         }
     }
-    if (city.length >= 8 && (num >= 1 || char >=1) && !special) {
+    if (cityLower.length >= 3 && !special) {
         hideError(divTxtbox);
         return true;
     } else{
