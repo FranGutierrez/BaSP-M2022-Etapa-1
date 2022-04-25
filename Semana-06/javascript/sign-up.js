@@ -1,12 +1,12 @@
 window.onload = function(){
     var signUpBtn = document.getElementById('signup-btn');
     signUpBtn.addEventListener('click', signUpClick);
+    getTodayDate();
 }
 
 var nameInput = document.getElementById('name');
 var surnameInput = document.getElementById('surname');
 var dniInput = document.getElementById('dni');
-var birthDateInput = document.getElementById('date-of-birth');
 var phoneNumberInput = document.getElementById('phone-number');
 var addressInput = document.getElementById('address');
 var cityInput = document.getElementById('city');
@@ -43,10 +43,6 @@ function signUpClick(){
         alert('ERROR\nDNI invalid');
         allIsValid = false;
     }
-    /*if(!validateDateOfBirth(employee.birthDate, textboxes[3])){
-        alert('ERROR\nDate of birth invalid');
-        allIsValid = false;
-    }*/
     if (!validatePhoneNumber(employee.phoneNumber, textboxes[4])){
         alert('ERROR\nPhone number invalid');
         allIsValid = false;
@@ -81,7 +77,6 @@ function signUpClick(){
         '\nAddress: \nCity: ' + employee.city + '\nPostal Code: ' + employee.cp + 
         '\nE-Mail: ' + employee.email + '\nPassword: ' + employee.password);
     }
-
 }
 
 function validateNameOrSurname(word, divTxtbox){
@@ -119,17 +114,20 @@ function validateDNI(dni, divTxtbox){
     }
 }
 
-function validateDateOfBirth(birthDate, dBirthDiv){
+function getTodayDate(){
+	var birthDateInput = document.getElementById('date-of-birth');
     var currentDate = new Date();
-    var today = currentDate.getTime();
-    var birth = birthDate.getTime();
-    if(today > birth){
-        hideError(dBirthDiv)
-        return true;
-    } else{
-        showError(dBirthDiv)
-        return false;
+    var day = currentDate.getDate().toString();
+    var month = currentDate.getMonth();
+    month++;
+    if (month < 10) {
+        month = '0' + month;
     }
+    month = month.toString();
+    var year = currentDate.getFullYear().toString();
+    var maxValue = year + '-' + (month) + '-' + day;
+    console.log(day,month,year);
+    birthDateInput.setAttribute('max',maxValue);
 }
 
 function validatePhoneNumber(phoneNumber, divTxtbox){
