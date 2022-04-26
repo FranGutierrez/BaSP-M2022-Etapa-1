@@ -15,6 +15,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto&display=swap" rel="stylesheet">
+        <script src="../javascript/contact.js"></script>
     </head>
     <body>
         <aside class="sidebar">
@@ -173,13 +174,26 @@
                     <h3>Form</h3>
                     <form>
                         <div class="txtshorts">
-                            <input type="text" id="short-textbox" name="name" value="Name">
-                            <input type="text" id="short-textbox" name="mail" value="Mail">
+                            <div class="label-textbox">
+                                <input type="text" id="name" class="short-textbox" name="name" placeholder="Name">
+                                <p class="label-error-none">Invalid value. Must have only letters.</p>
+                            </div>
+                            <div class="label-textbox">
+                                <input type="text" id="email" class="short-textbox" name="mail" placeholder="Mail">
+                                <p class="label-error-none">Invalid e-mail</p>
+                            </div>
                         </div>
-                        <select id="cat" name="category" value="-Category-">
-                        <input type="text" id="long-textbox" name="message" value="Enter your message">
+                        <select id="cat" name="category">
+                            <option value="Human Resources">Human Resources</option>
+                            <option value="Systems">Systems</option>
+                            <option value="Commercialization">Commercialization</option>
+                        </select>
+                        <div class="label-textbox">
+                            <input type="text" id="message" class="long-textbox" name="message" placeholder="Enter your message">
+                            <p class="label-error-none">Invalid message</p>
+                        </div>
                         <div class="buttons">
-                            <input type="submit" value="SEND MESSAGE">
+                            <input type="submit" id="submit" value="SEND MESSAGE">
                             <input type="reset" value="RESET">
                         </div>
                     </form>

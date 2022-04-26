@@ -177,7 +177,7 @@ function signUpClick(){
         alert('ERROR\nConfirm password invalid');
     }
     if(allIsValid){
-        alert('Log In succesfully!\nName: ' + employee.nameValue + '\nSurname: '+ employee.surname +
+        alert('Sign up succesfully!\nName: ' + employee.nameValue + '\nSurname: '+ employee.surname +
         '\nDNI: '+ employee.dni + '\nBirth Date: \nPhone Number: ' + employee.phoneNumber +
         '\nAddress: \nCity: ' + employee.city + '\nPostal Code: ' + employee.cp + 
         '\nE-Mail: ' + employee.email + '\nPassword: ' + employee.password);

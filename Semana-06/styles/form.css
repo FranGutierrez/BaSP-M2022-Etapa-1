@@ -13,28 +13,37 @@ form{
     width: 100%;
     height: 20%;
 }
-#short-textbox{
+.label-textbox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 0;
+}
+.short-textbox{
     width: 90%;
-    margin: 10px 5px;
     padding: 5px 10px;
     box-sizing: border-box;
     color: grey;
+    align-self: center;
 }
 #cat{
     width: 90%;
-    margin: 10px 5px;
+    margin: 30px 5px;
     padding: 5px 10px;
     box-sizing: border-box;
     color: grey;
+    align-self: center;
 }
-#long-textbox{
+.long-textbox{
     width: 90%;
     height: 100px;
-    margin: 10px 5px;
     padding: 5px 10px;
     box-sizing: border-box;
     color: grey;
     resize: none;
+    align-self: center;
 }
 input[type=submit]{
     margin: 5px;
@@ -68,6 +77,15 @@ input[type=reset]{
 input[type=reset]:hover{
     background-color: #AACE9B;
 }
+input[type=text].input-error{
+    border: #FF3E1D 1px solid;
+}
+.label-error{
+    color: #FF3E1D;
+}
+.label-error-none{
+    display: none;
+}
 @media(min-width: 768px){
     form{
         align-items: flex-start;
@@ -80,7 +98,10 @@ input[type=reset]:hover{
         flex-direction: row;
         justify-content: flex-start;
     }
-    #short-textbox{
-        width: 44.5%;
+    #cat{
+        width: 95%;
+    }
+    .long-textbox{
+        width: 95%;
     }
 }
