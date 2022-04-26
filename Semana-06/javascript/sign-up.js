@@ -2,18 +2,119 @@ window.onload = function(){
     var signUpBtn = document.getElementById('signup-btn');
     signUpBtn.addEventListener('click', signUpClick);
     getTodayDate();
-}
+    var textboxes = document.getElementsByClassName('label-textbox');
+    var nameInput = document.getElementById('name');
+    var surnameInput = document.getElementById('surname');
+    var dniInput = document.getElementById('dni');
+    var birthDateInput = document.getElementById('date-of-birth');
+    var phoneNumberInput = document.getElementById('phone-number');
+    var addressInput = document.getElementById('address');
+    var cityInput = document.getElementById('city');
+    var cpInput = document.getElementById('cp');
+    var emailInput = document.getElementById('email');
+    var passwordInput = document.getElementById('password');
+    var confirmPasswordInput = document.getElementById('confirm-password');
 
-var nameInput = document.getElementById('name');
-var surnameInput = document.getElementById('surname');
-var dniInput = document.getElementById('dni');
-var phoneNumberInput = document.getElementById('phone-number');
-var addressInput = document.getElementById('address');
-var cityInput = document.getElementById('city');
-var cpInput = document.getElementById('cp');
-var emailInput = document.getElementById('email');
-var passwordInput = document.getElementById('password');
-var confirmPasswordInput = document.getElementById('confirm-password');
+    function myFocus(input, divTxtbox){
+        hideError(divTxtbox);
+    }
+
+    function myBlur(input, divTxtbox){
+        if (input.value == '') {
+            showError(divTxtbox);
+        } else {
+            hideError(divTxtbox);
+        }
+    }
+
+    nameInput.onfocus = function(){
+        myFocus(nameInput, textboxes[0]);
+    }
+
+    nameInput.onblur = function(){
+        myBlur(nameInput, textboxes[0]);
+    }
+
+    surnameInput.onfocus = function(){
+        myFocus(surnameInput, textboxes[1]);
+    }
+
+    surnameInput.onblur = function(){
+        myBlur(surnameInput, textboxes[1]);
+    }
+
+    dniInput.onfocus = function(){
+        myFocus(dniInput, textboxes[2]);
+    }
+
+    dniInput.onblur = function(){
+        myBlur(dniInput, textboxes[2]);
+    }
+
+    birthDateInput.onfocus = function(){
+        myFocus(birthDateInput, textboxes[3]);
+    }
+
+    birthDateInput.onblur = function(){
+        myBlur(birthDateInput, textboxes[3]);
+    }
+
+    phoneNumberInput.onfocus = function(){
+        myFocus(phoneNumberInput, textboxes[4]);
+    }
+
+    phoneNumberInput.onblur = function(){
+        myBlur(phoneNumberInput, textboxes[4]);
+    }
+
+    addressInput.onfocus = function(){
+        myFocus(addressInput, textboxes[5]);
+    }
+
+    addressInput.onblur = function(){
+        myBlur(addressInput, textboxes[5]);
+    }
+
+    cityInput.onfocus = function(){
+        myFocus(cityInput, textboxes[6]);
+    }
+
+    cityInput.onblur = function(){
+        myBlur(cityInput, textboxes[6]);
+    }
+
+    cpInput.onfocus = function(){
+        myFocus(cpInput, textboxes[7]);
+    }
+
+    cpInput.onblur = function(){
+        myBlur(cpInput, textboxes[7]);
+    }
+
+    emailInput.onfocus = function(){
+        myFocus(emailInput, textboxes[8]);
+    }
+
+    emailInput.onblur = function(){
+        myBlur(emailInput, textboxes[8]);
+    }
+
+    passwordInput.onfocus = function(){
+        myFocus(passwordInput, textboxes[9]);
+    }
+
+    passwordInput.onblur = function(){
+        myBlur(passwordInput, textboxes[9]);
+    }
+
+    confirmPasswordInput.onfocus = function(){
+        myFocus(confirmPasswordInput, textboxes[10]);
+    }
+
+    confirmPasswordInput.onblur = function(){
+        myBlur(confirmPasswordInput, textboxes[10]);
+    }
+}
 
 function signUpClick(){
     var textboxes = document.getElementsByClassName('label-textbox');
@@ -41,6 +142,10 @@ function signUpClick(){
     }
     if(!validateDNI(employee.dni, textboxes[2])){
         alert('ERROR\nDNI invalid');
+        allIsValid = false;
+    }
+    if (!isFullAge(employee.birthDate, textboxes[3])) {
+        alert('ERROR\nDate of Birth invalid. You must have more than 18 years.');
         allIsValid = false;
     }
     if (!validatePhoneNumber(employee.phoneNumber, textboxes[4])){
@@ -129,6 +234,19 @@ function getTodayDate(){
     console.log(day,month,year);
     birthDateInput.setAttribute('max',maxValue);
 }
+
+function isFullAge(date, divTxtbox) {
+    var inputDate = new Date(date);
+    var thisMoment = new Date(Date.now());
+    var isMajor = new Date(thisMoment - inputDate).getFullYear() - 1970 >= 18;
+    if (isMajor) {
+        hideError(divTxtbox);
+        return true;
+    } else {
+        showError(divTxtbox);
+        return false;
+    }
+  }
 
 function validatePhoneNumber(phoneNumber, divTxtbox){
     var numbers = ['0','1','2','3','4','5','6','7','8','9'];

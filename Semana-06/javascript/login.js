@@ -1,6 +1,37 @@
 window.onload = function(){
     var logInBtn = document.getElementById('login-btn');
     logInBtn.addEventListener('click', logInClick);
+    var textboxes = document.getElementsByClassName('label-textbox');
+    var emailInput = document.getElementById('email');
+    var passwordInput = document.getElementById('password');
+
+    function myFocus(input, divTxtbox){
+        hideError(divTxtbox);
+    }
+
+    function myBlur(input, divTxtbox){
+        if (input.value == '') {
+            showError(divTxtbox);
+        } else {
+            hideError(divTxtbox);
+        }
+    }
+
+    emailInput.onfocus = function(){
+        myFocus(emailInput, textboxes[0]);
+    }
+
+    emailInput.onblur = function(){
+        myBlur(emailInput, textboxes[0]);
+    }
+
+    passwordInput.onfocus = function(){
+        myFocus(passwordInput, textboxes[1]);
+    }
+
+    passwordInput.onblur = function(){
+        myBlur(passwordInput, textboxes[1]);
+    }
 }
 
 function logInClick(){
