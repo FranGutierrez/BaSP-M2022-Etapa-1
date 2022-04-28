@@ -34,6 +34,25 @@ window.onload = function(){
     }
 }
 
+function request(emailValue, passwordValue, url){
+    fetch((url + '?email=' + emailValue + '&password=' + passwordValue), {
+        method : 'GET',
+        params : {
+            email : emailValue,
+            password : passwordValue
+        }
+    })
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(jsonResponse){
+            alert(jsonResponse.msg);
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+}
+
 function logInClick(){
     var textboxes = document.getElementsByClassName('label-textbox');
     var email = document.getElementById('email').value;
@@ -41,11 +60,11 @@ function logInClick(){
     if(!validateEmail(email, textboxes[0])){
         alert('ERROR\nE-mail invalid');
     }
-    if(!validatePassword(password,textboxes[1])){
+    if(!validatePassword(password, textboxes[1])){
         alert('ERROR\nPassword invalid');
     }
-    if(validateEmail(email) && validatePassword(password)){
-        alert('Log In succesfully!\nE-Mail: ' + email + '\nPassword: ' + password);
+    if(validateEmail(email, textboxes[0]) && validatePassword(password, textboxes[1])){
+        request(email, password, 'https://basp-m2022-api-rest-server.herokuapp.com/login');
     }
 }
 
@@ -63,13 +82,14 @@ function validateEmail(email, divTxtbox){
 function validatePassword(password, divTxtbox){
     var numbers = ['0','1','2','3','4','5','6','7','8','9'];
     var letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z'];
+    var passLow = password.toLowerCase();
     var num = 0;
     var char = 0;
     var special = false;
-    for (i = 0; i < password.length; i++) {
-        if (numbers.includes(password[i])) {
+    for (i = 0; i < passLow.length; i++) {
+        if (numbers.includes(passLow[i])) {
             num++;
-        } else if(letters.includes(password[i])){
+        } else if(letters.includes(passLow[i])){
             char++;
         } else{
             special = true;
