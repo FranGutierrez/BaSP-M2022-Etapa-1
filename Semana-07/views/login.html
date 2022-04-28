@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/sidebar.css">
+    <link rel="stylesheet" href="../styles/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto&display=swap" rel="stylesheet">
+    <script src="../javascript/login.js"></script>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="search">
+            <input type="search" name="search" id="search" value="Search">
+        </div>
+        <p class="title">Menu</p>
+        <div class="a-container">
+            <a href="HomePage">HOMEPAGE</a>
+            <a href="Generic">GENERIC</a>
+            <a href="SubMenu">SUBMENU</a>
+        </div>               
+        <p class="title">Get in touch</p>
+        <p class="text">
+            Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit.
+            Leo, venenatis volutpat fusce vitae, in suspendisse proin massa.
+            Mattis nulla libero nibh eu nisl sed.
+        </p>
+        <div class="a-container2">
+            <div class="img-a-container">
+                <img src="../img/mail.png" alt="Mail">
+                <a href="Mail">information@untitled.tld</a>
+            </div>
+            <div class="img-a-container-b">
+                <img src="../img/phone.png" alt="Phone">
+                <a href="Phone">(000) 0000 00000</a>
+            </div>
+            <div class="img-a-container">
+                <img src="../img/home.png" alt="Address">
+                <a href="Address">1234 Somewhere Road #8254 Nashville, TN 00000-0000</a>
+            </div>
+        </div>
+    </aside>
+    <div class="content">
+        <header>
+            <img src="../img/menu.png" alt="Menu">
+            <h1>TRACKGENIX</h1>
+            <ul>
+                <li><a href="../views/index.html">HOME</a></li>
+                <li><a href="../views/sign-up.html">SIGNUP</a></li>
+                <li><a href="../views/login.html">LOGIN</a></li>
+                <li><a href="/Contact/">CONTACT</a></li>
+            </ul>
+        </header>
+        <main>
+            <form class="login-form" action="process.php" method="POST">
+                <h3>TRACKGENIX</h3>
+                <div class="label-textbox">
+                    <p>E-Mail</p>
+                    <input type="text" name="email" id="email">
+                    <p class="label-error-none">Invalid e-mail</p>
+                </div>
+                <div class="label-textbox">
+                    <p>Password</p>
+                    <input type="password" name="password" id="password">
+                    <p class="label-error-none">Invalid password</p>
+                </div>
+                <input type="button" value="Log In" id="login-btn">
+            </form>
+        </main>
+    </div>
+</body>
+</html>
