@@ -32,9 +32,35 @@ window.onload = function(){
     passwordInput.onblur = function(){
         myBlur(passwordInput, textboxes[1]);
     }
+
+    var modal = document.getElementById("myModal");
+
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function(){
+    modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+    }
 }
 
-function requestLogIn(emailValue, passwordValue, url){
+function modalSuccess(modal, message){
+        modal.style.display = "block";
+        modal.children[0].children[1].children[0].innerHTML = message;
+        modal.children[0].children[0].classList.add('success');
+        modal.children[0].children[0].children[1].innerHTML = 'LOG IN SUCCESSFULLY!';
+}
+
+function modalError(modal){
+    modal.children[0].children[0].classList.add('error');
+    modal.children[0].children[0].children[1].innerHTML = 'ERROR';
+    modal.style.display = "block";
+}
+
+function requestLogIn(emailValue, passwordValue, url, modal){
     fetch((url + '?email=' + emailValue + '&password=' + passwordValue), {
         method : 'GET',
         params : {
@@ -46,7 +72,9 @@ function requestLogIn(emailValue, passwordValue, url){
             return response.json();
         })
         .then(function(jsonResponse){
-            alert(jsonResponse.msg);
+            if (jsonResponse.success) {
+                modalSuccess(modal, jsonResponse.msg);
+            }
         })
         .catch(function(error){
             console.log(error);
@@ -54,17 +82,21 @@ function requestLogIn(emailValue, passwordValue, url){
 }
 
 function logInClick(){
+    var modal = document.getElementById("myModal");
+    var modalText = modal.children[0].children[1];
     var textboxes = document.getElementsByClassName('label-textbox');
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
     if(!validateEmail(email, textboxes[0])){
-        alert('ERROR\nE-mail invalid');
+        modalText.innerHTML = 'E-mail invalid';
+        modalError(modal);
     }
     if(!validatePassword(password, textboxes[1])){
-        alert('ERROR\nPassword invalid');
+        modalText.innerHTML = 'Password invalid';
+        modalError(modal);
     }
     if(validateEmail(email, textboxes[0]) && validatePassword(password, textboxes[1])){
-        requestLogIn(email, password, 'https://basp-m2022-api-rest-server.herokuapp.com/login');
+        requestLogIn(email, password, 'https://basp-m2022-api-rest-server.herokuapp.com/login', modal);
     }
 }
 

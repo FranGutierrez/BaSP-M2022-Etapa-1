@@ -116,17 +116,17 @@ window.onload = function(){
     }
 
     function setSavedValues(){
-    nameInput.value = localStorage.getItem('Name');
-    surnameInput.value = localStorage.getItem('Surname');
-    dniInput.value = localStorage.getItem('DNI');
-    birthDateInput.value = convertDateFormatYMD(localStorage.getItem('Date of Birth'));
-    phoneNumberInput.value = localStorage.getItem('Phone');
-    addressInput.value = localStorage.getItem('Address');
-    cityInput.value = localStorage.getItem('City');
-    cpInput.value = localStorage.getItem('Postal Code');
-    emailInput.value = localStorage.getItem('Email');
-    passwordInput.value = localStorage.getItem('Password');
-    confirmPasswordInput.value = localStorage.getItem('Password');
+        nameInput.value = localStorage.getItem('Name');
+        surnameInput.value = localStorage.getItem('Surname');
+        dniInput.value = localStorage.getItem('DNI');
+        birthDateInput.value = convertDateFormatYMD(localStorage.getItem('Date of Birth'));
+        phoneNumberInput.value = localStorage.getItem('Phone');
+        addressInput.value = localStorage.getItem('Address');
+        cityInput.value = localStorage.getItem('City');
+        cpInput.value = localStorage.getItem('Postal Code');
+        emailInput.value = localStorage.getItem('Email');
+        passwordInput.value = localStorage.getItem('Password');
+        confirmPasswordInput.value = localStorage.getItem('Password');
     }
 
     if (localStorage.getItem('Saved') === 'true') {
