@@ -114,6 +114,24 @@ window.onload = function(){
     confirmPasswordInput.onblur = function(){
         myBlur(confirmPasswordInput, textboxes[10]);
     }
+
+    function setSavedValues(){
+    nameInput.value = localStorage.getItem('Name');
+    surnameInput.value = localStorage.getItem('Surname');
+    dniInput.value = localStorage.getItem('DNI');
+    birthDateInput.value = convertDateFormatYMD(localStorage.getItem('Date of Birth'));
+    phoneNumberInput.value = localStorage.getItem('Phone');
+    addressInput.value = localStorage.getItem('Address');
+    cityInput.value = localStorage.getItem('City');
+    cpInput.value = localStorage.getItem('Postal Code');
+    emailInput.value = localStorage.getItem('Email');
+    passwordInput.value = localStorage.getItem('Password');
+    confirmPasswordInput.value = localStorage.getItem('Password');
+    }
+
+    if (localStorage.getItem('Saved') === 'true') {
+        setSavedValues();
+    }
 }
 
 function requestSignUp(employee, url){
@@ -138,11 +156,28 @@ function requestSignUp(employee, url){
             return response.json();
         })
         .then(function(jsonResponse){
-            console.log(jsonResponse);
+            alert(jsonResponse.msg);
+            if (jsonResponse.success) {
+                saveInLocalStorage(employee);
+            }
         })
         .catch(function(error){
             console.log(error);
         })
+}
+
+function saveInLocalStorage(employee){
+    localStorage.setItem('Name', employee.nameValue);
+    localStorage.setItem('Surname', employee.surname);
+    localStorage.setItem('DNI', employee.dni);
+    localStorage.setItem('Date of Birth', employee.birthDate);
+    localStorage.setItem('Phone', employee.phoneNumber);
+    localStorage.setItem('Address', employee.address);
+    localStorage.setItem('City', employee.city);
+    localStorage.setItem('Postal Code', employee.cp);
+    localStorage.setItem('Email', employee.email);
+    localStorage.setItem('Password', employee.password);
+    localStorage.setItem('Saved', 'true');
 }
 
 function signUpClick(){
@@ -206,7 +241,7 @@ function signUpClick(){
         alert('ERROR\nConfirm password invalid');
     }
     if(allIsValid){
-        employee.birthDate = convertDateFormat(employee.birthDate);
+        employee.birthDate = convertDateFormatMDY(employee.birthDate);
         requestSignUp(employee, 'https://basp-m2022-api-rest-server.herokuapp.com/signup');
     }
 }
@@ -250,8 +285,7 @@ function getTodayDate(){
 	var birthDateInput = document.getElementById('date-of-birth');
     var currentDate = new Date();
     var day = currentDate.getDate().toString();
-    var month = currentDate.getMonth();
-    month++;
+    var month = currentDate.getMonth() + 1;
     if (month < 10) {
         month = '0' + month;
     }
@@ -262,7 +296,26 @@ function getTodayDate(){
     birthDateInput.setAttribute('max',maxValue);
 }
 
-function convertDateFormat(date){
+function convertDateFormatMDY(date){
+    var inputDate = new Date(date);
+    var month = inputDate.getMonth();
+    month++;
+    if (month < 10) {
+        month = '0' + month;
+    }
+    month = month.toString();
+    var day = inputDate.getDate();
+    day++;
+    if (day < 10) {
+        day = '0' + day;
+    }
+    day = day.toString();
+    var year = inputDate.getFullYear().toString();
+    date = month + '/' + day + '/' + year;
+    return date;
+}
+
+function convertDateFormatYMD(date){
     var inputDate = new Date(date);
     var month = inputDate.getMonth();
     month++;
@@ -276,7 +329,7 @@ function convertDateFormat(date){
     }
     day = day.toString();
     var year = inputDate.getFullYear().toString();
-    date = month + '/' + day + '/' + year;
+    date = year + '-' + month + '-' + day;
     return date;
 }
 
