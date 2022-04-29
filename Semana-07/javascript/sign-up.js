@@ -116,6 +116,35 @@ window.onload = function(){
     }
 }
 
+function requestSignUp(employee, url){
+    fetch(url + '?name=' + employee.nameValue + '&lastName=' + employee.surname + '&dni=' + employee.dni
+    + '&dob=' + employee.birthDate + '&phone=' + employee.phoneNumber + '&address=' + employee.address
+    + '&city=' + employee.city + '&zip=' + employee.cp + '&email=' + employee.email + '&password=' + employee.password,{
+        method : 'GET',
+        params : {
+            name : employee.nameValue,
+            lastName : employee.surname,
+            dni : employee.dni,
+            dob : employee.birthDate,
+            phone : employee.phoneNumber,
+            address : employee.address,
+            city : employee.city,
+            zip : employee.cp,
+            email : employee.email,
+            password : employee.password
+        }
+    })
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(jsonResponse){
+            console.log(jsonResponse);
+        })
+        .catch(function(error){
+            console.log(error);
+        })
+}
+
 function signUpClick(){
     var textboxes = document.getElementsByClassName('label-textbox');
     var employee = {
@@ -177,10 +206,8 @@ function signUpClick(){
         alert('ERROR\nConfirm password invalid');
     }
     if(allIsValid){
-        alert('Sign up succesfully!\nName: ' + employee.nameValue + '\nSurname: '+ employee.surname +
-        '\nDNI: '+ employee.dni + '\nBirth Date: \nPhone Number: ' + employee.phoneNumber +
-        '\nAddress: \nCity: ' + employee.city + '\nPostal Code: ' + employee.cp + 
-        '\nE-Mail: ' + employee.email + '\nPassword: ' + employee.password);
+        employee.birthDate = convertDateFormat(employee.birthDate);
+        requestSignUp(employee, 'https://basp-m2022-api-rest-server.herokuapp.com/signup');
     }
 }
 
@@ -230,9 +257,27 @@ function getTodayDate(){
     }
     month = month.toString();
     var year = currentDate.getFullYear().toString();
-    var maxValue = year + '-' + (month) + '-' + day;
+    var maxValue = year + '-' + month + '-' + day;
     console.log(day,month,year);
     birthDateInput.setAttribute('max',maxValue);
+}
+
+function convertDateFormat(date){
+    var inputDate = new Date(date);
+    var month = inputDate.getMonth();
+    month++;
+    if (month < 10) {
+        month = '0' + month;
+    }
+    month = month.toString();
+    var day = inputDate.getDate();
+    if (day < 10) {
+        day = '0' + day;
+    }
+    day = day.toString();
+    var year = inputDate.getFullYear().toString();
+    date = month + '/' + day + '/' + year;
+    return date;
 }
 
 function isFullAge(date, divTxtbox) {
@@ -351,13 +396,14 @@ function validateEmail(email, divTxtbox){
 function validatePassword(password, divTxtbox){
     var numbers = ['0','1','2','3','4','5','6','7','8','9'];
     var letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z'];
+    var passLow = password.toLowerCase();
     var num = 0;
     var char = 0;
     var special = false;
-    for (i = 0; i < password.length; i++) {
-        if (numbers.includes(password[i])) {
+    for (i = 0; i < passLow.length; i++) {
+        if (numbers.includes(passLow[i])) {
             num++;
-        } else if(letters.includes(password[i])){
+        } else if(letters.includes(passLow[i])){
             char++;
         } else{
             special = true;

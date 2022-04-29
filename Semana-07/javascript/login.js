@@ -34,7 +34,7 @@ window.onload = function(){
     }
 }
 
-function request(emailValue, passwordValue, url){
+function requestLogIn(emailValue, passwordValue, url){
     fetch((url + '?email=' + emailValue + '&password=' + passwordValue), {
         method : 'GET',
         params : {
@@ -64,7 +64,7 @@ function logInClick(){
         alert('ERROR\nPassword invalid');
     }
     if(validateEmail(email, textboxes[0]) && validatePassword(password, textboxes[1])){
-        request(email, password, 'https://basp-m2022-api-rest-server.herokuapp.com/login');
+        requestLogIn(email, password, 'https://basp-m2022-api-rest-server.herokuapp.com/login');
     }
 }
 
