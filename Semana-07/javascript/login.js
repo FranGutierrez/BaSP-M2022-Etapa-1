@@ -74,6 +74,9 @@ function requestLogIn(emailValue, passwordValue, url, modal){
         .then(function(jsonResponse){
             if (jsonResponse.success) {
                 modalSuccess(modal, jsonResponse.msg);
+            } else {
+                modalError(modal);
+                modal.children[0].children[1].children[0].innerHTML = jsonResponse.msg;
             }
         })
         .catch(function(error){

@@ -115,6 +115,19 @@ window.onload = function(){
         myBlur(confirmPasswordInput, textboxes[10]);
     }
 
+    var modal = document.getElementById("myModal");
+
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function(){
+    modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+    }
+
     function setSavedValues(){
         nameInput.value = localStorage.getItem('Name');
         surnameInput.value = localStorage.getItem('Surname');
@@ -134,7 +147,20 @@ window.onload = function(){
     }
 }
 
-function requestSignUp(employee, url){
+function modalSuccess(modal, message){
+    modal.style.display = "block";
+    modal.children[0].children[1].children[0].innerHTML = message;
+    modal.children[0].children[0].classList.add('success');
+    modal.children[0].children[0].children[1].innerHTML = 'SIGN UP SUCCESSFULLY!';
+}
+
+function modalError(modal){
+    modal.children[0].children[0].classList.add('error');
+    modal.children[0].children[0].children[1].innerHTML = 'ERROR';
+    modal.style.display = "block";
+}
+
+function requestSignUp(employee, url, modal){
     fetch(url + '?name=' + employee.nameValue + '&lastName=' + employee.surname + '&dni=' + employee.dni
     + '&dob=' + employee.birthDate + '&phone=' + employee.phoneNumber + '&address=' + employee.address
     + '&city=' + employee.city + '&zip=' + employee.cp + '&email=' + employee.email + '&password=' + employee.password,{
@@ -156,9 +182,12 @@ function requestSignUp(employee, url){
             return response.json();
         })
         .then(function(jsonResponse){
-            alert(jsonResponse.msg);
             if (jsonResponse.success) {
                 saveInLocalStorage(employee);
+                modalSuccess(modal, jsonResponse.msg);
+            } else {
+                modalError(modal);
+                modal.children[0].children[1].children[0].innerHTML = jsonResponse.msg;
             }
         })
         .catch(function(error){
@@ -181,6 +210,8 @@ function saveInLocalStorage(employee){
 }
 
 function signUpClick(){
+    var modal = document.getElementById("myModal");
+    var modalText = modal.children[0].children[1];
     var textboxes = document.getElementsByClassName('label-textbox');
     var employee = {
         nameValue : document.getElementById('name').value,
@@ -197,52 +228,63 @@ function signUpClick(){
     }
     var allIsValid = true;
     if(!validateNameOrSurname(employee.nameValue, textboxes[0])){
-        alert('ERROR\nName invalid');
+        modalText.innerHTML = 'Name invalid. Must have only letters and at least 3.';
+        modalError(modal);
         allIsValid = false;
     }
     if(!validateNameOrSurname(employee.surname, textboxes[1])){
-        alert('ERROR\nSurname invalid');
+        modalText.innerHTML = 'Last name invalid. Must have only letters and at least 3.';
+        modalError(modal);
         allIsValid = false;
     }
     if(!validateDNI(employee.dni, textboxes[2])){
-        alert('ERROR\nDNI invalid');
+        modalText.innerHTML = 'DNI invalid. Must have only 7 numbers.';
+        modalError(modal);
         allIsValid = false;
     }
     if (!isFullAge(employee.birthDate, textboxes[3])) {
-        alert('ERROR\nDate of Birth invalid. You must have more than 18 years.');
+        modalText.innerHTML = 'Date of Birth invalid. You must have more than 18 years.';
+        modalError(modal);
         allIsValid = false;
     }
     if (!validatePhoneNumber(employee.phoneNumber, textboxes[4])){
-        alert('ERROR\nPhone number invalid');
+        modalText.innerHTML = 'Phone invalid. Must have only 10 numbers.';
+        modalError(modal);
         allIsValid = false;
     }
     if (!validateAddress(employee.address, textboxes[5])) {
-        alert('ERROR\nAddress invalid');
+        modalText.innerHTML = 'Address invalid.';
+        modalError(modal);
         allIsValid = false;
     }
     if(!validateCity(employee.city, textboxes[6])){
-        alert('ERROR\nCity invalid');
+        modalText.innerHTML = 'City invalid.';
+        modalError(modal);
         allIsValid = false;
     }
     if(!validateCP(employee.cp, textboxes[7])){
-        alert('ERROR\nPostal code invalid');
+        modalText.innerHTML = 'Postal code invalid. Must have between 4 and 5 numbers.';
+        modalError(modal);
         allIsValid = false;
     }
     if(!validateEmail(employee.email, textboxes[8])){
+        modalText.innerHTML = 'Email invalid.';
+        modalError(modal);
         allIsValid = false;
-        alert('ERROR\nE-mail invalid');
     }
     if(!validatePassword(employee.password, textboxes[9])){
+        modalText.innerHTML = 'Password invalid. Must have letter and numbers. At least 8 characters.';
+        modalError(modal);
         allIsValid = false;
-        alert('ERROR\nPassword invalid');
     }
     if(!validateConfirmPassword(employee.password, employee.confirmPassword, textboxes[10])){
+        modalText.innerHTML = 'Confirm password invalid. Passwords do not match';
+        modalError(modal);
         allIsValid = false;
-        alert('ERROR\nConfirm password invalid');
     }
     if(allIsValid){
         employee.birthDate = convertDateFormatMDY(employee.birthDate);
-        requestSignUp(employee, 'https://basp-m2022-api-rest-server.herokuapp.com/signup');
+        requestSignUp(employee, 'https://basp-m2022-api-rest-server.herokuapp.com/signup', modal);
     }
 }
 
