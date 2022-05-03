@@ -9,20 +9,12 @@ window.onload = function(){
         hideError(divTxtbox);
     }
 
-    function myBlur(input, divTxtbox){
-        if (input.value == '') {
-            showError(divTxtbox);
-        } else {
-            hideError(divTxtbox);
-        }
-    }
-
     emailInput.onfocus = function(){
         myFocus(emailInput, textboxes[0]);
     }
 
     emailInput.onblur = function(){
-        myBlur(emailInput, textboxes[0]);
+        inputStatus[0] = validateEmail(emailInput.value, textboxes[0]);
     }
 
     passwordInput.onfocus = function(){
@@ -30,7 +22,7 @@ window.onload = function(){
     }
 
     passwordInput.onblur = function(){
-        myBlur(passwordInput, textboxes[1]);
+        inputStatus[1] = validatePassword(passwordInput.value, textboxes[1]);
     }
 
     var modal = document.getElementById("myModal");
@@ -46,6 +38,8 @@ window.onload = function(){
         }
     }
 }
+
+var inputStatus = [true, true];
 
 function modalSuccess(modal, message){
         modal.style.display = "block";
@@ -90,15 +84,18 @@ function logInClick(){
     var textboxes = document.getElementsByClassName('label-textbox');
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
-    if(!validateEmail(email, textboxes[0])){
+    var allIsValid = true;
+    if(!inputStatus[0]){
         modalText.innerHTML = 'E-mail invalid';
         modalError(modal);
+        allIsValid = false
     }
-    if(!validatePassword(password, textboxes[1])){
+    if(!inputStatus[1]){
         modalText.innerHTML = 'Password invalid';
         modalError(modal);
+        allIsValid = false
     }
-    if(validateEmail(email, textboxes[0]) && validatePassword(password, textboxes[1])){
+    if(allIsValid){
         requestLogIn(email, password, 'https://basp-m2022-api-rest-server.herokuapp.com/login', modal);
     }
 }
