@@ -145,11 +145,39 @@ window.onload = function(){
 var inputStatus = [];
 
 function modalSuccess(modal, message, data){
+    var dataList = document.getElementById('data-list');
+    var liName = document.createElement('li');
+    liName.appendChild(document.createTextNode('Name: ' + data.name));
+    dataList.appendChild(liName);
+    var liLastName = document.createElement('li');
+    liLastName.appendChild(document.createTextNode('Last Name: ' + data.lastName));
+    dataList.appendChild(liLastName);
+    var liDni = document.createElement('li');
+    liDni.appendChild(document.createTextNode('DNI: ' + data.dni));
+    dataList.appendChild(liDni);
+    var liDob = document.createElement('li');
+    liDob.appendChild(document.createTextNode('Date of Birth: ' + data.dob));
+    dataList.appendChild(liDob);
+    var liPhone = document.createElement('li');
+    liPhone.appendChild(document.createTextNode('Phone: ' + data.phone));
+    dataList.appendChild(liPhone);
+    var liAddress = document.createElement('li');
+    liAddress.appendChild(document.createTextNode('Address: ' + data.address));
+    dataList.appendChild(liAddress);
+    var liCity = document.createElement('li');
+    liCity.appendChild(document.createTextNode('City: ' + data.city));
+    dataList.appendChild(liCity);
+    var liCp = document.createElement('li');
+    liCp.appendChild(document.createTextNode('Postal Code: ' + data.zip));
+    dataList.appendChild(liCp);
+    var liEmail = document.createElement('li');
+    liEmail.appendChild(document.createTextNode('Email: ' + data.email));
+    dataList.appendChild(liEmail);
+    var liPass = document.createElement('li');
+    liPass.appendChild(document.createTextNode('Password: ' + data.password));
+    dataList.appendChild(liPass);
     modal.style.display = "block";
-    modal.children[0].children[1].children[0].innerHTML = message + ' -Name: ' + data.name + 
-        ' -Surname: '+ data.lastName + ' -DNI: '+ data.dni + ' -Birth Date: ' + data.dob +  
-        ' -Phone Number: ' + data.phone + ' -Address: ' + data.address + ' -City: ' + data.city + 
-        ' -Postal Code: ' + data.zip + ' -E-Mail: ' + data.email + ' -Password: ' + data.password;
+    modal.children[0].children[1].children[0].innerHTML = message;
     modal.children[0].children[0].classList.add('success');
     modal.children[0].children[0].children[1].innerHTML = 'SIGN UP SUCCESSFULLY!';
 }
@@ -157,6 +185,7 @@ function modalSuccess(modal, message, data){
 function modalError(modal){
     modal.children[0].children[0].classList.add('error');
     modal.children[0].children[0].children[1].innerHTML = 'ERROR';
+    modal.children[0].children[1].children[0].innerHTML = 'Invalid values :';
     modal.style.display = "block";
 }
 
@@ -211,8 +240,7 @@ function saveInLocalStorage(employee){
 
 function signUpClick(){
     var modal = document.getElementById("myModal");
-    var modalText = modal.children[0].children[1];
-    var textboxes = document.getElementsByClassName('label-textbox');
+    var dataList = document.getElementById('data-list');
     var employee = {
         nameValue : document.getElementById('name').value,
         surname : document.getElementById('surname').value,
@@ -228,57 +256,79 @@ function signUpClick(){
     }
     var allIsValid = true;
     if (!inputStatus[0]){
-        modalText.innerHTML = 'Name invalid. Must have only letters and at least 3.';
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode('Name'));
+        dataList.appendChild(li);
         modalError(modal);
         allIsValid = false;
     }
     if (!inputStatus[1]){
-        modalText.innerHTML = 'Last name invalid. Must have only letters and at least 3.';
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode('Last Name'));
+        dataList.appendChild(li);
         modalError(modal);
         allIsValid = false;
     }
     if (!inputStatus[2]){
-        modalText.innerHTML = 'DNI invalid. Must have only 7 numbers.';
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode('DNI'));
+        dataList.appendChild(li);
         modalError(modal);
         allIsValid = false;
     }
     if (!inputStatus[3]) {
-        modalText.innerHTML = 'Date of Birth invalid. You must have more than 18 years.';
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode('Date of Birth'));
+        dataList.appendChild(li);
         modalError(modal);
         allIsValid = false;
     }
     if (!inputStatus[4]){
-        modalText.innerHTML = 'Phone invalid. Must have only 10 numbers.';
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode('Phone Number'));
+        dataList.appendChild(li);
         modalError(modal);
         allIsValid = false;
     }
     if (!inputStatus[5]) {
-        modalText.innerHTML = 'Address invalid.';
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode('Address'));
+        dataList.appendChild(li);
         modalError(modal);
         allIsValid = false;
     }
     if (!inputStatus[6]){
-        modalText.innerHTML = 'City invalid.';
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode('City'));
+        dataList.appendChild(li);
         modalError(modal);
         allIsValid = false;
     }
     if (!inputStatus[7]){
-        modalText.innerHTML = 'Postal code invalid. Must have between 4 and 5 numbers.';
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode('Postal Code'));
+        dataList.appendChild(li);
         modalError(modal);
         allIsValid = false;
     }
     if (!inputStatus[8]){
-        modalText.innerHTML = 'Email invalid.';
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode('Email'));
+        dataList.appendChild(li);
         modalError(modal);
         allIsValid = false;
     }
     if (!inputStatus[9]){
-        modalText.innerHTML = 'Password invalid. Must have letter and numbers. At least 8 characters.';
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode('Password'));
+        dataList.appendChild(li);
         modalError(modal);
         allIsValid = false;
     }
     if (!inputStatus[10]){
-        modalText.innerHTML = 'Confirm password invalid. Passwords do not match';
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode('Confirm Password'));
+        dataList.appendChild(li);
         modalError(modal);
         allIsValid = false;
     }

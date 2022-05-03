@@ -81,7 +81,6 @@ function requestLogIn(emailValue, passwordValue, url, modal){
 function logInClick(){
     var modal = document.getElementById("myModal");
     var modalText = modal.children[0].children[1];
-    var textboxes = document.getElementsByClassName('label-textbox');
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
     var allIsValid = true;
