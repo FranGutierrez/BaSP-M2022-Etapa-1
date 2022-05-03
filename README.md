@@ -15,7 +15,7 @@ Excercises of JavaScript.
 https://frangutierrez.github.io/BaSP-M2022-Etapa-1/Semana-05/index.html
 
 ## Week 6
-Create a login page and a sign up for employees with the layout of the landing page, using JavaScript to manipulate the DOM. The pages have to be responsives.
+Create a login page and a sign up for employees with the layout of the landing page, using JavaScript to manipulate the DOM. The pages have to be responsives. https://frangutierrez.github.io/BaSP-M2022-Etapa-1/Semana-06/views/login.html
 
 ## Week 7
 Add functionality to the login and signup, to send the form data to a web server through a HTTP request using JavaScript. https://frangutierrez.github.io/BaSP-M2022-Etapa-1/Semana-07/views/index.html

@@ -19,20 +19,12 @@ window.onload = function(){
         hideError(divTxtbox);
     }
 
-    function myBlur(input, divTxtbox){
-        if (input.value == '') {
-            showError(divTxtbox);
-        } else {
-            hideError(divTxtbox);
-        }
-    }
-
     nameInput.onfocus = function(){
         myFocus(nameInput, textboxes[0]);
     }
 
     nameInput.onblur = function(){
-        myBlur(nameInput, textboxes[0]);
+        inputStatus[0] = validateNameOrSurname(nameInput.value, textboxes[0]);
     }
 
     surnameInput.onfocus = function(){
@@ -40,7 +32,7 @@ window.onload = function(){
     }
 
     surnameInput.onblur = function(){
-        myBlur(surnameInput, textboxes[1]);
+        inputStatus[1] = validateNameOrSurname(surnameInput.value, textboxes[1]);
     }
 
     dniInput.onfocus = function(){
@@ -48,7 +40,7 @@ window.onload = function(){
     }
 
     dniInput.onblur = function(){
-        myBlur(dniInput, textboxes[2]);
+        inputStatus[2] = validateDNI(dniInput.value, textboxes[2]);
     }
 
     birthDateInput.onfocus = function(){
@@ -56,7 +48,7 @@ window.onload = function(){
     }
 
     birthDateInput.onblur = function(){
-        myBlur(birthDateInput, textboxes[3]);
+        inputStatus[3] = isFullAge(birthDateInput.value, textboxes[3]);
     }
 
     phoneNumberInput.onfocus = function(){
@@ -64,7 +56,7 @@ window.onload = function(){
     }
 
     phoneNumberInput.onblur = function(){
-        myBlur(phoneNumberInput, textboxes[4]);
+        inputStatus[4] = validatePhoneNumber(phoneNumberInput.value, textboxes[4]);
     }
 
     addressInput.onfocus = function(){
@@ -72,7 +64,7 @@ window.onload = function(){
     }
 
     addressInput.onblur = function(){
-        myBlur(addressInput, textboxes[5]);
+        inputStatus[5] = validateAddress(addressInput.value, textboxes[5]);
     }
 
     cityInput.onfocus = function(){
@@ -80,7 +72,7 @@ window.onload = function(){
     }
 
     cityInput.onblur = function(){
-        myBlur(cityInput, textboxes[6]);
+        inputStatus[6] = validateCity(cityInput.value, textboxes[6]);
     }
 
     cpInput.onfocus = function(){
@@ -88,7 +80,7 @@ window.onload = function(){
     }
 
     cpInput.onblur = function(){
-        myBlur(cpInput, textboxes[7]);
+        inputStatus[7] = validateCP(cpInput.value, textboxes[7]);
     }
 
     emailInput.onfocus = function(){
@@ -96,7 +88,7 @@ window.onload = function(){
     }
 
     emailInput.onblur = function(){
-        myBlur(emailInput, textboxes[8]);
+        inputStatus[8] = validateEmail(emailInput.value, textboxes[8]);
     }
 
     passwordInput.onfocus = function(){
@@ -104,7 +96,7 @@ window.onload = function(){
     }
 
     passwordInput.onblur = function(){
-        myBlur(passwordInput, textboxes[9]);
+        inputStatus[9] = validatePassword(passwordInput.value, textboxes[9]);
     }
 
     confirmPasswordInput.onfocus = function(){
@@ -112,7 +104,7 @@ window.onload = function(){
     }
 
     confirmPasswordInput.onblur = function(){
-        myBlur(confirmPasswordInput, textboxes[10]);
+        inputStatus[10] = validateConfirmPassword(passwordInput.value, confirmPasswordInput.value, textboxes[10]);
     }
 
     var modal = document.getElementById("myModal");
@@ -144,12 +136,20 @@ window.onload = function(){
 
     if (localStorage.getItem('Saved') === 'true') {
         setSavedValues();
+        for (i = 0; i < 11; i++) {
+            inputStatus[i] = true;
+        }
     }
 }
 
-function modalSuccess(modal, message){
+var inputStatus = [];
+
+function modalSuccess(modal, message, data){
     modal.style.display = "block";
-    modal.children[0].children[1].children[0].innerHTML = message;
+    modal.children[0].children[1].children[0].innerHTML = message + ' -Name: ' + data.name + 
+        ' -Surname: '+ data.lastName + ' -DNI: '+ data.dni + ' -Birth Date: ' + data.dob +  
+        ' -Phone Number: ' + data.phone + ' -Address: ' + data.address + ' -City: ' + data.city + 
+        ' -Postal Code: ' + data.zip + ' -E-Mail: ' + data.email + ' -Password: ' + data.password;
     modal.children[0].children[0].classList.add('success');
     modal.children[0].children[0].children[1].innerHTML = 'SIGN UP SUCCESSFULLY!';
 }
@@ -184,7 +184,7 @@ function requestSignUp(employee, url, modal){
         .then(function(jsonResponse){
             if (jsonResponse.success) {
                 saveInLocalStorage(employee);
-                modalSuccess(modal, jsonResponse.msg);
+                modalSuccess(modal, jsonResponse.msg, jsonResponse.data);
             } else {
                 modalError(modal);
                 modal.children[0].children[1].children[0].innerHTML = jsonResponse.msg;
@@ -227,65 +227,66 @@ function signUpClick(){
         confirmPassword : document.getElementById('confirm-password').value,
     }
     var allIsValid = true;
-    if(!validateNameOrSurname(employee.nameValue, textboxes[0])){
+    if (!inputStatus[0]){
         modalText.innerHTML = 'Name invalid. Must have only letters and at least 3.';
         modalError(modal);
         allIsValid = false;
     }
-    if(!validateNameOrSurname(employee.surname, textboxes[1])){
+    if (!inputStatus[1]){
         modalText.innerHTML = 'Last name invalid. Must have only letters and at least 3.';
         modalError(modal);
         allIsValid = false;
     }
-    if(!validateDNI(employee.dni, textboxes[2])){
+    if (!inputStatus[2]){
         modalText.innerHTML = 'DNI invalid. Must have only 7 numbers.';
         modalError(modal);
         allIsValid = false;
     }
-    if (!isFullAge(employee.birthDate, textboxes[3])) {
+    if (!inputStatus[3]) {
         modalText.innerHTML = 'Date of Birth invalid. You must have more than 18 years.';
         modalError(modal);
         allIsValid = false;
     }
-    if (!validatePhoneNumber(employee.phoneNumber, textboxes[4])){
+    if (!inputStatus[4]){
         modalText.innerHTML = 'Phone invalid. Must have only 10 numbers.';
         modalError(modal);
         allIsValid = false;
     }
-    if (!validateAddress(employee.address, textboxes[5])) {
+    if (!inputStatus[5]) {
         modalText.innerHTML = 'Address invalid.';
         modalError(modal);
         allIsValid = false;
     }
-    if(!validateCity(employee.city, textboxes[6])){
+    if (!inputStatus[6]){
         modalText.innerHTML = 'City invalid.';
         modalError(modal);
         allIsValid = false;
     }
-    if(!validateCP(employee.cp, textboxes[7])){
+    if (!inputStatus[7]){
         modalText.innerHTML = 'Postal code invalid. Must have between 4 and 5 numbers.';
         modalError(modal);
         allIsValid = false;
     }
-    if(!validateEmail(employee.email, textboxes[8])){
+    if (!inputStatus[8]){
         modalText.innerHTML = 'Email invalid.';
         modalError(modal);
         allIsValid = false;
     }
-    if(!validatePassword(employee.password, textboxes[9])){
+    if (!inputStatus[9]){
         modalText.innerHTML = 'Password invalid. Must have letter and numbers. At least 8 characters.';
         modalError(modal);
         allIsValid = false;
     }
-    if(!validateConfirmPassword(employee.password, employee.confirmPassword, textboxes[10])){
+    if (!inputStatus[10]){
         modalText.innerHTML = 'Confirm password invalid. Passwords do not match';
         modalError(modal);
         allIsValid = false;
     }
-    if(allIsValid){
+    if (allIsValid){
         employee.birthDate = convertDateFormatMDY(employee.birthDate);
         requestSignUp(employee, 'https://basp-m2022-api-rest-server.herokuapp.com/signup', modal);
     }
+    console.log(inputStatus);
 }
 
 function validateNameOrSurname(word, divTxtbox){
@@ -327,6 +328,9 @@ function getTodayDate(){
 	var birthDateInput = document.getElementById('date-of-birth');
     var currentDate = new Date();
     var day = currentDate.getDate().toString();
+    if (day < 10) {
+        day = '0' + day;
+    }
     var month = currentDate.getMonth() + 1;
     if (month < 10) {
         month = '0' + month;
